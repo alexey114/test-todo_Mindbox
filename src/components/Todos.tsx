@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import TodoItems from "./TodoItems";
 import TextField from "@mui/material/TextField";
 import AddTaskSharpIcon from "@mui/icons-material/AddTaskSharp";
@@ -30,7 +30,7 @@ const ITEMS_DEFAULT = [
 export default function Todos() {
   const [inputValue, setInputValue] = useState<string>("");
   const [items, setItems] = useState<IItemsTodo[]>(ITEMS_DEFAULT);
-  const [currentItems, setCurrentItems] = useState<IItemsTodo[]>([]);
+  const [currentItems, setCurrentItems] = useState<IItemsTodo[]>(ITEMS_DEFAULT);
   const [isAllTasks, setIsAllTasks] = useState(true);
 
   function addItem() {
@@ -38,56 +38,56 @@ export default function Todos() {
       console.log("заполните поле");
       return;
     }
-    setItems([
+    const newItems = [
       ...items,
       { id: items.length + 1, name: inputValue, completed: false },
-    ]);
+    ];
+    setItems(newItems);
+    updateCurrentItems(newItems, isAllTasks ? null : false);
   }
 
   const check = (id: number) => {
-    setItems(
-      items.map((item) => {
-        if (item.id === id) {
-          return { ...item, completed: !item.completed };
-        }
-        return item;
-      })
-    );
+    const newItems = items.map((item) => {
+      if (item.id === id) {
+        return { ...item, completed: !item.completed };
+      }
+      return item;
+    });
+    setItems(newItems);
+    updateCurrentItems(newItems, isAllTasks ? null : currentItems[0]?.completed);
   };
 
-  function isFilterCompletedTasks(arg: boolean, argAll: boolean) {
-    if (argAll) {
-      isAllTasksVisible(argAll);
+  function updateCurrentItems(newItems: IItemsTodo[], filter: boolean | null) {
+    if (filter === null) {
+      setCurrentItems(newItems);
+    } else {
+      setCurrentItems(newItems.filter((item) => item.completed === filter));
     }
-    setCurrentItems(items.filter((element) => element.completed === arg));
-    isAllTasksVisible(argAll);
-    console.log("currentItems", currentItems);
-    console.log("arg", arg);
   }
 
-  function isAllTasksVisible(visible: boolean) {
-    setIsAllTasks(visible);
+  function isFilterCompletedTasks(arg: boolean, argAll: boolean) {
+    setIsAllTasks(argAll);
+    updateCurrentItems(items, argAll ? null : arg);
   }
 
   const outstanding = () => {
-    //?? мемоизировать некоторые значения, а то отрисовка console.log("items", items) идёт 4 раза
-    let res = 0;
-
-    items.forEach((element) => {
-      if (element.completed === false) {
-        res++;
-      }
-    });
-    // return setOutstandingTasks(res);
-    return res;
+    return items.reduce((acc, item) => (item.completed ? acc : acc + 1), 0);
   };
 
-  outstanding();
-
-  console.log("items", items);
+  useEffect(() => {
+    updateCurrentItems(items, isAllTasks ? null : currentItems[0]?.completed);
+  }, [items]);
 
   return (
-    <div style={{border: "1px solid #000", borderRadius: 20, padding: 30, backgroundColor: "#fff", boxShadow: "10px 5px 5px black"}}>
+    <div
+      style={{
+        border: "1px solid #000",
+        borderRadius: 20,
+        padding: 30,
+        backgroundColor: "#fff",
+        boxShadow: "10px 5px 5px black",
+      }}
+    >
       <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
         <TextField
           variant="outlined"
@@ -95,11 +95,21 @@ export default function Todos() {
           type="text"
           onChange={(event) => setInputValue(event.target.value)}
           value={inputValue}
-          style={{width: "100%"}}
+          style={{ width: "100%" }}
         />
-        <AddTaskSharpIcon onClick={addItem} />
+        <button onClick={addItem} aria-label="add">
+          <AddTaskSharpIcon />
+        </button>
       </div>
-      <div style={{ display: "flex", flexWrap: "wrap", gap: 20, alignItems: "center", margin: 20 }}>
+      <div
+        style={{
+          display: "flex",
+          flexWrap: "wrap",
+          gap: 20,
+          alignItems: "center",
+          margin: 20,
+        }}
+      >
         <div>
           {outstanding()
             ? `${outstanding()} невыполнена(ы)`
@@ -113,7 +123,7 @@ export default function Todos() {
           Выполненые
         </button>
       </div>
-      <TodoItems items={isAllTasks ? items : currentItems} check={check} />
+      <TodoItems items={currentItems} check={check} />
     </div>
   );
 }

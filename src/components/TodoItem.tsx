@@ -9,7 +9,7 @@ export interface IItemProps {
 export const TodoItem = ({ item, check }: IItemProps) => {
   return (
     <>
-      <div style={{display: "flex", alignItems: "center"}}>
+      <div style={{ display: "flex", alignItems: "center" }}>
         <Checkbox
           checked={item.completed}
           id={item.id.toString()}
@@ -17,7 +17,10 @@ export const TodoItem = ({ item, check }: IItemProps) => {
           inputProps={{ "aria-label": "controlled" }}
         ></Checkbox>
         <div
-          style={{ textDecoration: item.completed ? "line-through" : "none", opacity: item.completed ? 0.6 : 1 }}
+          style={{
+            textDecoration: item.completed ? "line-through" : "none",
+            opacity: item.completed ? 0.6 : 1,
+          }}
           key={item.id}
         >
           {item.name}
