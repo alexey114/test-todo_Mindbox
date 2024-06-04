@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import TodoItems from "./TodoItems";
 import TextField from "@mui/material/TextField";
 import AddTaskSharpIcon from "@mui/icons-material/AddTaskSharp";
+import toast, { Toaster } from "react-hot-toast";
 
 export interface IItemsTodo {
   id: number;
@@ -35,7 +36,7 @@ export default function Todos() {
 
   function addItem() {
     if (inputValue === "") {
-      console.log("заполните поле");
+      toast.error("Введите задачу!")
       return;
     }
     const newItems = [
@@ -43,6 +44,7 @@ export default function Todos() {
       { id: items.length + 1, name: inputValue, completed: false },
     ];
     setItems(newItems);
+    toast.success('Задача добавлена!')
     updateCurrentItems(newItems, isAllTasks ? null : false);
   }
 
@@ -54,7 +56,10 @@ export default function Todos() {
       return item;
     });
     setItems(newItems);
-    updateCurrentItems(newItems, isAllTasks ? null : currentItems[0]?.completed);
+    updateCurrentItems(
+      newItems,
+      isAllTasks ? null : currentItems[0]?.completed
+    );
   };
 
   function updateCurrentItems(newItems: IItemsTodo[], filter: boolean | null) {
@@ -88,6 +93,7 @@ export default function Todos() {
         boxShadow: "10px 5px 5px black",
       }}
     >
+      <Toaster position="top-center" reverseOrder={true} />
       <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
         <TextField
           variant="outlined"
