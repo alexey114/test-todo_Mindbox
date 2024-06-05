@@ -36,15 +36,19 @@ export default function Todos() {
 
   function addItem() {
     if (inputValue === "") {
-      toast.error("Введите задачу!")
+      toast.error("Введите задачу!");
       return;
     }
     const newItems = [
       ...items,
-      { id: items.length + 1, name: inputValue, completed: false },
+      {
+        id: items[items.length - 1]?.id + 1 || 0,
+        name: inputValue,
+        completed: false,
+      },
     ];
     setItems(newItems);
-    toast.success('Задача добавлена!')
+    toast.success("Задача добавлена!");
     updateCurrentItems(newItems, isAllTasks ? null : false);
   }
 
@@ -78,6 +82,13 @@ export default function Todos() {
   const outstanding = () => {
     return items.reduce((acc, item) => (item.completed ? acc : acc + 1), 0);
   };
+
+  function deleteCompletedTasks() {
+    const newItems = items.filter((item) => !item.completed);
+    setItems(newItems);
+    updateCurrentItems(newItems, isAllTasks ? null : false);
+    toast.success("Выполненные задачи удалены!");
+  }
 
   useEffect(() => {
     updateCurrentItems(items, isAllTasks ? null : currentItems[0]?.completed);
@@ -122,12 +133,9 @@ export default function Todos() {
             : "Все задачи выполнены!"}{" "}
         </div>
         <button onClick={() => isFilterCompletedTasks(false, true)}>Все</button>
-        <button onClick={() => isFilterCompletedTasks(false, false)}>
-          Активные
-        </button>
-        <button onClick={() => isFilterCompletedTasks(true, false)}>
-          Выполненые
-        </button>
+        <button onClick={() => isFilterCompletedTasks(false, false)}>Активные</button>
+        <button onClick={() => isFilterCompletedTasks(true, false)}>Выполненые</button>
+        <button onClick={deleteCompletedTasks}>Удалить выполненные</button>
       </div>
       <TodoItems items={currentItems} check={check} />
     </div>

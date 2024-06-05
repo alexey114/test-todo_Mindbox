@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">97.77% </span>
+                <span class="strong">94.4% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>132/135</span>
+                <span class='fraction'>135/143</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">81.48% </span>
+                <span class="strong">78.57% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>22/27</span>
+                <span class='fraction'>22/28</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">90.9% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>10/10</span>
+                <span class='fraction'>10/11</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">97.77% </span>
+                <span class="strong">94.4% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>132/135</span>
+                <span class='fraction'>135/143</span>
             </div>
         
             
@@ -198,7 +198,15 @@
 <a name='L133'></a><a href='#L133'>133</a>
 <a name='L134'></a><a href='#L134'>134</a>
 <a name='L135'></a><a href='#L135'>135</a>
-<a name='L136'></a><a href='#L136'>136</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L136'></a><a href='#L136'>136</a>
+<a name='L137'></a><a href='#L137'>137</a>
+<a name='L138'></a><a href='#L138'>138</a>
+<a name='L139'></a><a href='#L139'>139</a>
+<a name='L140'></a><a href='#L140'>140</a>
+<a name='L141'></a><a href='#L141'>141</a>
+<a name='L142'></a><a href='#L142'>142</a>
+<a name='L143'></a><a href='#L143'>143</a>
+<a name='L144'></a><a href='#L144'>144</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -239,6 +247,10 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -280,10 +292,14 @@
 <span class="cline-any cline-yes">28x</span>
 <span class="cline-any cline-yes">14x</span>
 <span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-yes">14x</span>
 <span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">14x</span>
-<span class="cline-any cline-yes">14x</span>
-<span class="cline-any cline-yes">14x</span>
 <span class="cline-any cline-yes">14x</span>
 <span class="cline-any cline-yes">14x</span>
 <span class="cline-any cline-yes">14x</span>
@@ -371,15 +387,19 @@ export default function Todos() {
 &nbsp;
   function addItem() {
     if (inputValue === "") <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
-<span class="cstat-no" title="statement not covered" >      toast.error("Введите задачу!")</span>
+<span class="cstat-no" title="statement not covered" >      toast.error("Введите задачу!");</span>
 <span class="cstat-no" title="statement not covered" >      return;</span>
 <span class="cstat-no" title="statement not covered" >    }</span>
     const newItems = [
       ...items,
-      { id: items.length + 1, name: inputValue, completed: false },
+      {
+        id: items[items.length - 1]?.id + <span class="branch-0 cbranch-no" title="branch not covered" >1 || 0,</span>
+        name: inputValue,
+        completed: false,
+      },
     ];
     setItems(newItems);
-    toast.success('Задача добавлена!')
+    toast.success("Задача добавлена!");
     updateCurrentItems(newItems, isAllTasks ? <span class="branch-0 cbranch-no" title="branch not covered" >null : false)</span>;
   }
 &nbsp;
@@ -413,6 +433,13 @@ export default function Todos() {
   const outstanding = () =&gt; {
     return items.reduce((acc, item) =&gt; (item.completed ? acc : acc + 1), 0);
   };
+&nbsp;
+<span class="fstat-no" title="function not covered" >  function deleteCompletedTasks() {</span>
+<span class="cstat-no" title="statement not covered" >    const newItems = items.filter((item) =&gt; !item.completed);</span>
+<span class="cstat-no" title="statement not covered" >    setItems(newItems);</span>
+<span class="cstat-no" title="statement not covered" >    updateCurrentItems(newItems, isAllTasks ? null : false);</span>
+<span class="cstat-no" title="statement not covered" >    toast.success("Выполненные задачи удалены!");</span>
+<span class="cstat-no" title="statement not covered" >  }</span>
 &nbsp;
   useEffect(() =&gt; {
     updateCurrentItems(items, isAllTasks ? <span class="branch-0 cbranch-no" title="branch not covered" >null : currentItems[0]?.completed)</span>;
@@ -457,12 +484,9 @@ export default function Todos() {
             : "Все задачи выполнены!"}{" "}
         &lt;/div&gt;
         &lt;button onClick={() =&gt; isFilterCompletedTasks(false, true)}&gt;Все&lt;/button&gt;
-        &lt;button onClick={() =&gt; isFilterCompletedTasks(false, false)}&gt;
-          Активные
-        &lt;/button&gt;
-        &lt;button onClick={() =&gt; isFilterCompletedTasks(true, false)}&gt;
-          Выполненые
-        &lt;/button&gt;
+        &lt;button onClick={() =&gt; isFilterCompletedTasks(false, false)}&gt;Активные&lt;/button&gt;
+        &lt;button onClick={() =&gt; isFilterCompletedTasks(true, false)}&gt;Выполненые&lt;/button&gt;
+        &lt;button onClick={deleteCompletedTasks}&gt;Удалить выполненные&lt;/button&gt;
       &lt;/div&gt;
       &lt;TodoItems items={currentItems} check={check} /&gt;
     &lt;/div&gt;
@@ -475,7 +499,7 @@ export default function Todos() {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-06-05T09:22:11.990Z
+                at 2024-06-05T10:15:47.366Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
