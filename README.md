@@ -1,30 +1,17 @@
-# React + TypeScript + Vite
+# Выполненое тестовое задание с использованием React + TypeScript + Vite + Material UI + покрыто тестами
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Возможности:
+- Добавление задач
+- Активация \ деактивация задач
+- Отображаение активных \ не активных \ всех задач
+- Удаление одной кнопкой всех не активных задач
+- Уведомления при удалении \ добавлении задач
+- Счетчик активных задач
 
-Currently, two official plugins are available:
+Перед запуском выполняем npm i && npm run start
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+![image](https://github.com/alexey114/test-todo_Mindbox/assets/25858872/f6fbdf7a-b938-43db-9f61-1a9d1a665e95)
 
-## Expanding the ESLint configuration
+![image](https://github.com/alexey114/test-todo_Mindbox/assets/25858872/ce66f81b-a64b-4826-ae05-1ec0d8d5e35d)
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+![image](https://github.com/alexey114/test-todo_Mindbox/assets/25858872/94ad034f-2287-4b06-916c-237670861249)
