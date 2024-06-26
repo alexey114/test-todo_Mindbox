@@ -4,12 +4,13 @@ import { IItemsTodo } from './Todos'
 export interface IItemProps {
 	item: IItemsTodo
 	check: (id: number) => void
+	deleteItem: (id: number) => void;
 }
 
-export const TodoItem = ({ item, check }: IItemProps) => {
+export const TodoItem = ({ item, check, deleteItem }: IItemProps) => {
 	return (
 		<>
-			<div style={{ display: 'flex', alignItems: 'center' }}>
+			<div style={{ display: 'flex', alignItems: 'center', margin: 10 }}>
 				<Checkbox
 					checked={item.completed}
 					id={item.id.toString()}
@@ -25,6 +26,7 @@ export const TodoItem = ({ item, check }: IItemProps) => {
 				>
 					{item.name}
 				</div>
+				<button style={{marginLeft: "auto", backgroundColor: "orange"}} onClick={() => deleteItem(item.id)}>Удалить</button>
 			</div>
 		</>
 	)
