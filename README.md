@@ -15,3 +15,6 @@
 ![image](https://github.com/alexey114/test-todo_Mindbox/assets/25858872/ce66f81b-a64b-4826-ae05-1ec0d8d5e35d)
 
 ![image](https://github.com/alexey114/test-todo_Mindbox/assets/25858872/94ad034f-2287-4b06-916c-237670861249)
+
+Верстка приложения адаптивна:
+![image](https://github.com/alexey114/test-todo_Mindbox/assets/25858872/4324604e-3c53-4f7b-9689-83c84928d8d4)
