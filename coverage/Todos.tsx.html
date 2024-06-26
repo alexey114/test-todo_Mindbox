@@ -3,15 +3,15 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for src/components/Todos.tsx</title>
+    <title>Code coverage report for Todos.tsx</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="../../prettify.css" />
-    <link rel="stylesheet" href="../../base.css" />
-    <link rel="shortcut icon" type="image/x-icon" href="../../favicon.png" />
+    <link rel="stylesheet" href="prettify.css" />
+    <link rel="stylesheet" href="base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style type='text/css'>
         .coverage-summary .sorter {
-            background-image: url(../../sort-arrow-sprite.png);
+            background-image: url(sort-arrow-sprite.png);
         }
     </style>
 </head>
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">src/components</a> Todos.tsx</h1>
+        <h1><a href="index.html">All files</a> Todos.tsx</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">94.4% </span>
+                <span class="strong">91.39% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>135/143</span>
+                <span class='fraction'>138/151</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">90.9% </span>
+                <span class="strong">83.33% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>10/11</span>
+                <span class='fraction'>10/12</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">94.4% </span>
+                <span class="strong">91.39% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>135/143</span>
+                <span class='fraction'>138/151</span>
             </div>
         
             
@@ -206,7 +206,15 @@
 <a name='L141'></a><a href='#L141'>141</a>
 <a name='L142'></a><a href='#L142'>142</a>
 <a name='L143'></a><a href='#L143'>143</a>
-<a name='L144'></a><a href='#L144'>144</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L144'></a><a href='#L144'>144</a>
+<a name='L145'></a><a href='#L145'>145</a>
+<a name='L146'></a><a href='#L146'>146</a>
+<a name='L147'></a><a href='#L147'>147</a>
+<a name='L148'></a><a href='#L148'>148</a>
+<a name='L149'></a><a href='#L149'>149</a>
+<a name='L150'></a><a href='#L150'>150</a>
+<a name='L151'></a><a href='#L151'>151</a>
+<a name='L152'></a><a href='#L152'>152</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -270,9 +278,13 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">14x</span>
 <span class="cline-any cline-yes">14x</span>
 <span class="cline-any cline-yes">11x</span>
@@ -349,148 +361,160 @@
 <span class="cline-any cline-yes">14x</span>
 <span class="cline-any cline-yes">14x</span>
 <span class="cline-any cline-yes">14x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { useEffect, useState } from "react";
-import TodoItems from "./TodoItems";
-import TextField from "@mui/material/TextField";
-import AddTaskSharpIcon from "@mui/icons-material/AddTaskSharp";
-import toast, { Toaster } from "react-hot-toast";
+<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import AddTaskSharpIcon from '@mui/icons-material/AddTaskSharp'
+import TextField from '@mui/material/TextField'
+import { useEffect, useState } from 'react'
+import toast, { Toaster } from 'react-hot-toast'
+import TodoItems from './TodoItems'
 &nbsp;
 export interface IItemsTodo {
-  id: number;
-  name: string;
-  completed: boolean;
+	id: number
+	name: string
+	completed: boolean
 }
 &nbsp;
 const ITEMS_DEFAULT = [
-  {
-    id: 1,
-    name: "вынести мусор",
-    completed: true,
-  },
-  {
-    id: 2,
-    name: "сделать ракету",
-    completed: false,
-  },
-  {
-    id: 3,
-    name: "слетать в космос",
-    completed: false,
-  },
-];
+	{
+		id: 1,
+		name: 'вынести мусор',
+		completed: true,
+	},
+	{
+		id: 2,
+		name: 'сделать ракету',
+		completed: false,
+	},
+	{
+		id: 3,
+		name: 'слетать в космос',
+		completed: false,
+	},
+]
 &nbsp;
 export default function Todos() {
-  const [inputValue, setInputValue] = useState&lt;string&gt;("");
-  const [items, setItems] = useState&lt;IItemsTodo[]&gt;(ITEMS_DEFAULT);
-  const [currentItems, setCurrentItems] = useState&lt;IItemsTodo[]&gt;(ITEMS_DEFAULT);
-  const [isAllTasks, setIsAllTasks] = useState(true);
+	const [inputValue, setInputValue] = useState&lt;string&gt;('')
+	const [items, setItems] = useState&lt;IItemsTodo[]&gt;(ITEMS_DEFAULT)
+	const [currentItems, setCurrentItems] = useState&lt;IItemsTodo[]&gt;(ITEMS_DEFAULT)
+	const [isAllTasks, setIsAllTasks] = useState(true)
 &nbsp;
-  function addItem() {
-    if (inputValue === "") <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
-<span class="cstat-no" title="statement not covered" >      toast.error("Введите задачу!");</span>
-<span class="cstat-no" title="statement not covered" >      return;</span>
-<span class="cstat-no" title="statement not covered" >    }</span>
-    const newItems = [
-      ...items,
-      {
-        id: items[items.length - 1]?.id + <span class="branch-0 cbranch-no" title="branch not covered" >1 || 0,</span>
-        name: inputValue,
-        completed: false,
-      },
-    ];
-    setItems(newItems);
-    toast.success("Задача добавлена!");
-    updateCurrentItems(newItems, isAllTasks ? <span class="branch-0 cbranch-no" title="branch not covered" >null : false)</span>;
-  }
+	function addItem() {
+		if (inputValue === '') <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >			toast.error('Введите задачу!')</span>
+<span class="cstat-no" title="statement not covered" >			return</span>
+<span class="cstat-no" title="statement not covered" >		}</span>
+		const newItems = [
+			...items,
+			{
+				id: items[items.length - 1]?.id + <span class="branch-0 cbranch-no" title="branch not covered" >1 || 0,</span>
+				name: inputValue,
+				completed: false,
+			},
+		]
+		setItems(newItems)
+		toast.success('Задача добавлена!')
+		updateCurrentItems(newItems, isAllTasks ? <span class="branch-0 cbranch-no" title="branch not covered" >null : false)</span>
+	}
 &nbsp;
-  const check = (id: number) =&gt; {
-    const newItems = items.map((item) =&gt; {
-      if (item.id === id) {
-        return { ...item, completed: !item.completed };
-      }
-      return item;
-    });
-    setItems(newItems);
-    updateCurrentItems(
-      newItems,
-      isAllTasks ? <span class="branch-0 cbranch-no" title="branch not covered" >null : currentItems[0]?.completed</span>
-    );
-  };
+	const check = (id: number) =&gt; {
+		const newItems = items.map(item =&gt; {
+			if (item.id === id) {
+				return { ...item, completed: !item.completed }
+			}
+			return item
+		})
+		setItems(newItems)
+		updateCurrentItems(newItems, isAllTasks ? <span class="branch-0 cbranch-no" title="branch not covered" >null : currentItems[0]?.completed)</span>
+	}
 &nbsp;
-  function updateCurrentItems(newItems: IItemsTodo[], filter: boolean | null) {
-    if (filter === null) {
-      setCurrentItems(newItems);
-    } else {
-      setCurrentItems(newItems.filter((item) =&gt; item.completed === filter));
-    }
-  }
+	const deleteItem = <span class="fstat-no" title="function not covered" >(id: number) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >		const newItems = items.filter(item =&gt; item.id !== id)</span>
+<span class="cstat-no" title="statement not covered" >		setItems(newItems)</span>
+<span class="cstat-no" title="statement not covered" >		updateCurrentItems(newItems, isAllTasks ? null : false)</span>
+<span class="cstat-no" title="statement not covered" >		toast.success('Задача удалена!')</span>
+<span class="cstat-no" title="statement not covered" >	}</span>
 &nbsp;
-  function isFilterCompletedTasks(arg: boolean, argAll: boolean) {
-    setIsAllTasks(argAll);
-    updateCurrentItems(items, argAll ? null : arg);
-  }
+	function updateCurrentItems(newItems: IItemsTodo[], filter: boolean | null) {
+		if (filter === null) {
+			setCurrentItems(newItems)
+		} else {
+			setCurrentItems(newItems.filter(item =&gt; item.completed === filter))
+		}
+	}
 &nbsp;
-  const outstanding = () =&gt; {
-    return items.reduce((acc, item) =&gt; (item.completed ? acc : acc + 1), 0);
-  };
+	function isFilterCompletedTasks(arg: boolean, argAll: boolean) {
+		setIsAllTasks(argAll)
+		updateCurrentItems(items, argAll ? null : arg)
+	}
 &nbsp;
-<span class="fstat-no" title="function not covered" >  function deleteCompletedTasks() {</span>
-<span class="cstat-no" title="statement not covered" >    const newItems = items.filter((item) =&gt; !item.completed);</span>
-<span class="cstat-no" title="statement not covered" >    setItems(newItems);</span>
-<span class="cstat-no" title="statement not covered" >    updateCurrentItems(newItems, isAllTasks ? null : false);</span>
-<span class="cstat-no" title="statement not covered" >    toast.success("Выполненные задачи удалены!");</span>
-<span class="cstat-no" title="statement not covered" >  }</span>
+	const outstanding = () =&gt; {
+		return items.reduce((acc, item) =&gt; (item.completed ? acc : acc + 1), 0)
+	}
 &nbsp;
-  useEffect(() =&gt; {
-    updateCurrentItems(items, isAllTasks ? <span class="branch-0 cbranch-no" title="branch not covered" >null : currentItems[0]?.completed)</span>;
-  }, [items]);
+<span class="fstat-no" title="function not covered" >	function deleteCompletedTasks() {</span>
+<span class="cstat-no" title="statement not covered" >		const newItems = items.filter(item =&gt; !item.completed)</span>
+<span class="cstat-no" title="statement not covered" >		setItems(newItems)</span>
+<span class="cstat-no" title="statement not covered" >		updateCurrentItems(newItems, isAllTasks ? null : false)</span>
+<span class="cstat-no" title="statement not covered" >		toast.success('Выполненные задачи удалены!')</span>
+<span class="cstat-no" title="statement not covered" >	}</span>
 &nbsp;
-  return (
-    &lt;div
-      style={{
-        border: "1px solid #000",
-        borderRadius: 20,
-        padding: 30,
-        backgroundColor: "#fff",
-        boxShadow: "10px 5px 5px black",
-      }}
-    &gt;
-      &lt;Toaster position="top-center" reverseOrder={true} /&gt;
-      &lt;div style={{ display: "flex", alignItems: "center", gap: 10 }}&gt;
-        &lt;TextField
-          variant="outlined"
-          label="Введите новую задачу!"
-          type="text"
-          onChange={(event) =&gt; setInputValue(event.target.value)}
-          value={inputValue}
-          style={{ width: "100%" }}
-        /&gt;
-        &lt;button onClick={addItem} aria-label="add"&gt;
-          &lt;AddTaskSharpIcon /&gt;
-        &lt;/button&gt;
-      &lt;/div&gt;
-      &lt;div
-        style={{
-          display: "flex",
-          flexWrap: "wrap",
-          gap: 20,
-          alignItems: "center",
-          margin: 20,
-        }}
-      &gt;
-        &lt;div&gt;
-          {outstanding()
-            ? `${outstanding()<span class="branch-0 cbranch-no" title="branch not covered" >} невыполнена(ы)`</span>
-            : "Все задачи выполнены!"}{" "}
-        &lt;/div&gt;
-        &lt;button onClick={() =&gt; isFilterCompletedTasks(false, true)}&gt;Все&lt;/button&gt;
-        &lt;button onClick={() =&gt; isFilterCompletedTasks(false, false)}&gt;Активные&lt;/button&gt;
-        &lt;button onClick={() =&gt; isFilterCompletedTasks(true, false)}&gt;Выполненые&lt;/button&gt;
-        &lt;button onClick={deleteCompletedTasks}&gt;Удалить выполненные&lt;/button&gt;
-      &lt;/div&gt;
-      &lt;TodoItems items={currentItems} check={check} /&gt;
-    &lt;/div&gt;
-  );
+	useEffect(() =&gt; {
+		updateCurrentItems(items, isAllTasks ? <span class="branch-0 cbranch-no" title="branch not covered" >null : currentItems[0]?.completed)</span>
+	}, [items])
+&nbsp;
+	return (
+		&lt;div
+			style={{
+				border: '1px solid #000',
+				borderRadius: 20,
+				padding: 30,
+				backgroundColor: '#fff',
+				boxShadow: '10px 5px 5px black',
+			}}
+		&gt;
+			&lt;Toaster position='top-center' reverseOrder={true} /&gt;
+			&lt;div style={{ display: 'flex', alignItems: 'center', gap: 10 }}&gt;
+				&lt;TextField
+					variant='outlined'
+					label='Введите новую задачу!'
+					type='text'
+					onChange={event =&gt; setInputValue(event.target.value)}
+					value={inputValue}
+					style={{ width: '100%' }}
+				/&gt;
+				&lt;button onClick={addItem} aria-label='add'&gt;
+					&lt;AddTaskSharpIcon /&gt;
+				&lt;/button&gt;
+			&lt;/div&gt;
+			&lt;div
+				style={{
+					display: 'flex',
+					flexWrap: 'wrap',
+					gap: 20,
+					alignItems: 'center',
+					margin: 20,
+				}}
+			&gt;
+				&lt;div&gt;
+					{outstanding()
+						? `${outstanding()<span class="branch-0 cbranch-no" title="branch not covered" >} невыполненна(ы)`</span>
+						: 'Все задачи выполнены!'}{' '}
+				&lt;/div&gt;
+				&lt;button style={{backgroundColor: '#ddd'}} onClick={() =&gt; isFilterCompletedTasks(false, true)}&gt;Все&lt;/button&gt;
+				&lt;button style={{backgroundColor: '#933456'}} onClick={() =&gt; isFilterCompletedTasks(false, false)}&gt;
+					Активные
+				&lt;/button&gt;
+				&lt;button style={{backgroundColor: 'green'}} onClick={() =&gt; isFilterCompletedTasks(true, false)}&gt;
+					Выполненные
+				&lt;/button&gt;
+				&lt;button style={{backgroundColor: 'red'}} onClick={deleteCompletedTasks}&gt;Удалить выполненные&lt;/button&gt;
+			&lt;/div&gt;
+			&lt;TodoItems items={currentItems} check={check} deleteItem={deleteItem}/&gt;
+		&lt;/div&gt;
+	)
 }
 &nbsp;</pre></td></tr></table></pre>
 
@@ -499,16 +523,16 @@ export default function Todos() {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-06-05T10:15:47.366Z
+                at 2024-06-26T09:01:38.690Z
             </div>
-        <script src="../../prettify.js"></script>
+        <script src="prettify.js"></script>
         <script>
             window.onload = function () {
                 prettyPrint();
             };
         </script>
-        <script src="../../sorter.js"></script>
-        <script src="../../block-navigation.js"></script>
+        <script src="sorter.js"></script>
+        <script src="block-navigation.js"></script>
     </body>
 </html>
     

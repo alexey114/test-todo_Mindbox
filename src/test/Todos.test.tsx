@@ -1,6 +1,6 @@
-import { render, fireEvent, screen } from '@testing-library/react';
-import Todos from '../components/Todos';
-import './setup';
+import { fireEvent, render, screen } from '@testing-library/react'
+import Todos from '../components/Todos'
+import './setup'
 
 describe('Todos Component', () => {
   it('renders default tasks', () => {
@@ -34,7 +34,7 @@ describe('Todos Component', () => {
     expect(screen.getByText('сделать ракету')).toBeInTheDocument();
     expect(screen.getByText('слетать в космос')).toBeInTheDocument();
 
-    fireEvent.click(screen.getByText('Выполненые'));
+    fireEvent.click(screen.getByText('Выполненные'));
     expect(screen.getByText('вынести мусор')).toBeInTheDocument();
     expect(screen.queryByText('сделать ракету')).not.toBeInTheDocument();
     expect(screen.queryByText('слетать в космос')).not.toBeInTheDocument();
