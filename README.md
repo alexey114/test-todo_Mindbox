@@ -8,7 +8,7 @@
 - Уведомления при удалении \ добавлении задач
 - Счетчик активных задач
 
-Перед запуском выполняем npm i && npm run dev
+Перед запуском выполняем npm i && npm run start
 
 ![image](https://github.com/alexey114/test-todo_Mindbox/assets/25858872/f6fbdf7a-b938-43db-9f61-1a9d1a665e95)
 
